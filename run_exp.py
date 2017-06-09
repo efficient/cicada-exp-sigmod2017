@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # vim: set expandtab softtabstop=2 shiftwidth=2:
 
@@ -1056,30 +1056,30 @@ def run(exp, prepare_only):
 
   # update config
   if not exp['tag'].startswith('native-'):
-    conf = open('config-std.h').read()
+    conf = open('DBx1000/config-std.h').read()
     conf = update_conf(conf, exp)
-    open('config.h', 'w').write(conf)
+    open('DBx1000/config.h', 'w').write(conf)
 
-    shutil.copy('mica/src/mica/test/test_tx_conf_org.h',
-                'mica/src/mica/test/test_tx_conf.h')
+    shutil.copy('cicada-engine/src/mica/test/test_tx_conf_org.h',
+                'cicada-engine/src/mica/test/test_tx_conf.h')
   else:
-    shutil.copy('config-std.h', 'config.h')
+    shutil.copy('DBx1000/config-std.h', 'DBx1000/config.h')
 
-    conf = open('mica/src/mica/test/test_tx_conf_org.h').read()
+    conf = open('cicada-engine/src/mica/test/test_tx_conf_org.h').read()
     conf = update_conf(conf, exp)
-    open('mica/src/mica/test/test_tx_conf.h', 'w').write(conf)
+    open('cicada-engine/src/mica/test/test_tx_conf.h', 'w').write(conf)
 
   # clean up
-  os.system('make clean -j > /dev/null')
-  os.system('rm -f ./rundb')
+  os.system('make clean -j -C DBx1000 > /dev/null')
+  os.system('rm -f DBx1000/rundb')
 
   if hugepage_status != (hugepage_count[exp['alg']], exp['alg']):
-    os.system('mica/script/setup.sh %d %d > /dev/null' % \
+    os.system('cicada-engine/script/setup.sh %d %d > /dev/null' % \
       (hugepage_count[exp['alg']] / 2, hugepage_count[exp['alg']] / 2))
     hugepage_status = (hugepage_count[exp['alg']], exp['alg'])
   # else:
   #   if hugepage_status != (0, ''):
-  #     os.system('mica/script/setup.sh 0 0 > /dev/null')
+  #     os.system('cicada-engine/script/setup.sh 0 0 > /dev/null')
   #     hugepage_status = (0, '')
 
   # os.system('sudo bash -c "echo never > /sys/kernel/mm/transparent_hugepage/enabled"')
@@ -1100,9 +1100,9 @@ def run(exp, prepare_only):
       assert False
   elif not exp['tag'].startswith('native-'):
     # cmd = 'sudo ./rundb | tee %s' % (filename + '.tmp')
-    cmd = 'sudo ./rundb'
+    cmd = 'sudo DBx1000/rundb'
   else:
-    cmd = 'sudo mica/build/test_tx 0 0 0 0 0 0'
+    cmd = 'sudo cicada-engine/build/test_tx 0 0 0 0 0 0'
 
   print('  ' + cmd)
 
@@ -1113,12 +1113,9 @@ def run(exp, prepare_only):
   if exp['alg'].find('-REF') != -1:
     ret = 0
   elif not exp['tag'].startswith('native-'):
-    ret = os.system('make -j > /dev/null')
+    ret = os.system('make -j -C DBx1000 > /dev/null')
   else:
-    pdir = os.getcwd()
-    os.chdir('mica/build')
-    ret = os.system('make -j > /dev/null')
-    os.chdir(pdir)
+    ret = os.system('make -j -C cicada-engine/build > /dev/null')
   assert ret == 0, 'failed to compile for %s' % exp
   os.system('date')
   os.system('sudo sync')

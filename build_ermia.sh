@@ -1,6 +1,6 @@
 #!/bin/bash
 
-../script/setup.sh 0 0
+cicada-engine/script/setup.sh 0 0
 
 cd ermia || exit 1
 

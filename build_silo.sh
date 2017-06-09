@@ -1,6 +1,6 @@
 #!/bin/sh
 
-../script/setup.sh 0 0
+cicada-engine/script/setup.sh 0 0
 
 cd silo || exit 1
 

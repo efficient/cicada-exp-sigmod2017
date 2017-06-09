@@ -1,0 +1,15 @@
+[submodule "cicada-engine"]
+	path = cicada-engine
+	url = https://github.com/efficient/cicada-engine.git
+[submodule "DBx1000"]
+	path = DBx1000
+	url = https://github.com/efficient/cicada-exp-sigmod2017-DBx1000.git
+[submodule "silo"]
+	path = silo
+	url = https://github.com/efficient/cicada-exp-sigmod2017-silo.git
+[submodule "ermia"]
+	path = ermia
+	url = https://github.com/efficient/cicada-exp-sigmod2017-ermia.git
+[submodule "foedus_code"]
+	path = foedus_code
+	url = https://github.com/efficient/cicada-exp-sigmod2017-foedus_code.git
