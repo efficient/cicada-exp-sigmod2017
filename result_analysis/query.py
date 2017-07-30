@@ -1,5 +1,6 @@
 from __future__ import print_function
 import pprint
+import shutil
 from common import *
 
 # DEBUG = True
@@ -36,7 +37,7 @@ def init():
    # 1. * aborted_count / (committed_count + aborted_count) AS abort_rate,
    # (100. - mica_committed_time_perc) / 100. AS abort_time,
 
-  pd.set_option('display.width', pd.util.terminal.get_terminal_size()[0])
+  pd.set_option('display.width', shutil.get_terminal_size((80, 30)).columns)
   pd.set_option('display.max_columns', 1000)
 
 

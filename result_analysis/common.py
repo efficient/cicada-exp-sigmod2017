@@ -18,6 +18,8 @@ general_fontsize = 13
 legend_fontsize = 12
 
 matplotlib.rcParams.update({'font.size': general_fontsize})
+# a workaround for a unicode character (\textmu) problem that may occur with matplotlib >= 2.0
+#matplotlib.rcParams.update({'font.size': general_fontsize, 'text.latex.preamble': [r'\usepackage{lmodern}']})
 
 
 def detect_max_thread_count(df):

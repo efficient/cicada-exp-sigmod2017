@@ -3,7 +3,6 @@ from pandasql import sqldf
 import os
 import re
 import sys
-import pickle
 import pprint
 
 prefix = ''
@@ -197,7 +196,7 @@ def load_data(path):
   query_cache_path = 'query.cache'
 
   if os.path.exists(query_cache_path):
-    df = pickle.load(open(query_cache_path, 'rb'))
+    df = pd.read_pickle(query_cache_path)
     return df
 
   rows = []
