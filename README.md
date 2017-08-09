@@ -30,16 +30,16 @@ Installing packages
 Configuring systems
 -------------------
 
-        echo "`whoami` - memlock unlimited" | sudo tee -a /etc/security/limits.conf
-        echo "`whoami` - nofile 655360 | sudo tee -a /etc/security/limits.conf
-        echo "`whoami` - nproc 655360 | sudo tee -a /etc/security/limits.conf
-        echo "`whoami` - rtprio 99 | sudo tee -a /etc/security/limits.conf
+	echo "`whoami` - memlock unlimited" | sudo tee -a /etc/security/limits.conf
+	echo "`whoami` - nofile 655360 | sudo tee -a /etc/security/limits.conf
+	echo "`whoami` - nproc 655360 | sudo tee -a /etc/security/limits.conf
+	echo "`whoami` - rtprio 99 | sudo tee -a /etc/security/limits.conf
 
-        echo "kernel.shmall=1152921504606846720" | sudo tee -a /etc/sysctl.conf
-        echo "kernel.shmmax=9223372036854775807" | sudo tee -a /etc/sysctl.conf
-        echo "kernel.shmmni=409600" | sudo tee -a /etc/sysctl.conf
-        echo "vm.max_map_count=2147483647" | sudo tee -a /etc/sysctl.conf
-        echo "vm.hugetlb_shm_group=`grep '^hugeshm:' /etc/group | awk -F: -e '{print $3}'`" | sudo tee -a /etc/sysctl.conf
+	echo "kernel.shmall=1152921504606846720" | sudo tee -a /etc/sysctl.conf
+	echo "kernel.shmmax=9223372036854775807" | sudo tee -a /etc/sysctl.conf
+	echo "kernel.shmmni=409600" | sudo tee -a /etc/sysctl.conf
+	echo "vm.max_map_count=2147483647" | sudo tee -a /etc/sysctl.conf
+	echo "vm.hugetlb_shm_group=`grep '^hugeshm:' /etc/group | awk -F: -e '{print $3}'`" | sudo tee -a /etc/sysctl.conf
 
 	sudo groupadd hugeshm
 	echo "`whoami` ALL=(ALL:ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
@@ -57,16 +57,16 @@ Downloading source code
 Building all engines
 --------------------
 
-        ./build_cicada.sh
-        ./build_ermia.sh
-        ./build_foedus.sh
-        ./build_silo.sh
+	./build_cicada.sh
+	./build_ermia.sh
+	./build_foedus.sh
+	./build_silo.sh
 
 Running all experiments
 -----------------------
 
 	EXPNAME=MYEXP
-        ./run_exp.py exp_data_$EXPNAME run
+	./run_exp.py exp_data_$EXPNAME run
 
  * The entire experiment takes about 2 to 3 days to finish
  * Experiment result files are created in exp\_data\_$EXPNAME
@@ -75,8 +75,8 @@ Running all experiments
 Analyzing experiemnt results
 ----------------------------
 
-         cd result_analysis
-         ./analyze.sh ../exp_data_$EXPNAME
+	cd result_analysis
+	./analyze.sh ../exp_data_$EXPNAME
 
  * Output files are created under result\_analysis/output\_$EXPNAME
 
