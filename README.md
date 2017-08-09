@@ -11,7 +11,7 @@ Hardware requirements
  * DRAM >= 128 GiB
    * Ensure to use all memory channels for full memory bandwidth
 
-Installing Base OS
+Base OS
 -------
 
  * Ubuntu 14.04 LTS amd64 server
@@ -30,7 +30,7 @@ Installing packages
  * Estimated time: 1 hour
 
 Configuring system
-------------------------------------------------
+------------------
 
 	# for non-interactive experiment execution
 	echo "`whoami` ALL=(ALL:ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
@@ -57,6 +57,7 @@ Downloading source code
 -----------------------
 
 	git clone https://github.com/efficient/cicada-exp-sigmod2017.git
+
 	cd cicada-exp-sigmod2017
 	git submodule init
 	git submodule update
