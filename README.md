@@ -93,6 +93,9 @@ Analyzing experiment output
  * Estimated time: 15 minutes
  * Analysis output files are created under result\_analysis/output\_$EXPNAME
 
+Analysis output
+---------------
+
 	Figure 3
 	 (a) output_macrobench_tpcc-full_warehouse_1.pdf
 	 (b) output_macrobench_tpcc-full_warehouse_4.pdf
