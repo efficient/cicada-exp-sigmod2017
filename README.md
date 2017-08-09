@@ -1,60 +1,84 @@
 Cicada SIGMOD 2017 evaluation
 =============================
 
-Dependencies for experiment and analysis
-----------------------------------------
-
- * bash >= 4.0
- * python >= 3.4
- * pandas >= 0.20
- * pandasql >= 0.7
- * matplotlib < 2.0
-
-Compiling all engines
+Hardware requirements
 ---------------------
 
-         * ./build_cicada.sh
-         * ./build_ermia.sh
-         * ./build_foedus.sh
-         * ./build_silo.sh
+ * Dual-socket Intel CPU >= Haswell
+   * Interleaved CPU core ID mapping (even numbered cores on CPU 0, odd numbered cores on CPU 1)
+   * Turbo Boost disabled for more accurate core scalability measurement
+   * Hyperthreading enabled (though experiments do not use it)
+ * At least 128 GiB of DRAM
+   * Should use all available memory channels for full memory bandwidth
+
+Base OS distribution
+--------------------
+
+ * Ubuntu 14.04 LTS x86\_64
+
+Installing packages
+-------------------
+
+	sudo apt-get update
+	sudo apt-get install -y --force-yes software-properties-common
+	sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+
+	sudo apt-get update
+	sudo apt-get install -y --force-yes cmake git g++-5 libnuma-dev make python3 python3-pip
+	pip3 install --user 'pandas>=0.20,<0.21' 'pandasql>=0.7,<0.8' 'matplotlib>=1.5,<2.0'
+
+Configuring systems
+-------------------
+
+        echo "`whoami` - memlock unlimited" | sudo tee -a /etc/security/limits.conf
+        echo "`whoami` - nofile 655360 | sudo tee -a /etc/security/limits.conf
+        echo "`whoami` - nproc 655360 | sudo tee -a /etc/security/limits.conf
+        echo "`whoami` - rtprio 99 | sudo tee -a /etc/security/limits.conf
+
+        echo "kernel.shmall=1152921504606846720" | sudo tee -a /etc/sysctl.conf
+        echo "kernel.shmmax=9223372036854775807" | sudo tee -a /etc/sysctl.conf
+        echo "kernel.shmmni=409600" | sudo tee -a /etc/sysctl.conf
+        echo "vm.max_map_count=2147483647" | sudo tee -a /etc/sysctl.conf
+        echo "vm.hugetlb_shm_group=`grep '^hugeshm:' /etc/group | awk -F: -e '{print $3}'`" | sudo tee -a /etc/sysctl.conf
+
+	sudo groupadd hugeshm
+	echo "`whoami` ALL=(ALL:ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
+
+ * Restart the system
+
+Downloading source code
+-----------------------
+
+	git clone https://github.com/efficient/cicada-exp-sigmod2017.git
+	cd cicada-exp-sigmod2017
+	git submodule init
+	git submodule update
+
+Building all engines
+--------------------
+
+        ./build_cicada.sh
+        ./build_ermia.sh
+        ./build_foedus.sh
+        ./build_silo.sh
 
 Running all experiments
 -----------------------
 
- * The following takes about 2 days to finish
- * Output files will be created in exp_data_MYEXP
+	EXPNAME=MYEXP
+        ./run_exp.py exp_data_$EXPNAME run
 
-         * run_exp.py exp_data_MYEXP run
+ * The entire experiment takes about 2 to 3 days to finish
+ * Experiment result files are created in exp\_data\_$EXPNAME
+ * Each run automatically rebuilds DBx1000 (and cicada-engine for some experiments) to apply system/benchmark parameters
 
 Analyzing experiemnt results
 ----------------------------
 
- * Output files will be created in result_analysis/output_MYEXP
+         cd result_analysis
+         ./analyze.sh ../exp_data_$EXPNAME
 
-         * cd result_analysis
-         * ./analyze.sh ../exp_data_MYEXP
-
-Additional system configuration for third-party engines
--------------------------------------------------------
-
- * Add to /etc/security/limits.conf: (replace [user] with the username)
-
-        [user] - memlock unlimited
-
- * Add to /etc/security/limits.conf: (replace [user] with the username)
-
-        [user] - memlock unlimited
-        [user] - nofile 655360
-        [user] - nproc 655360
-        [user] - rtprio 99
-
- * Add to /etc/sysctl.conf: (run sudo sysctl -p -w; replace [HUGETLB_SHM_GROUP] with hugeshm's group ID)
-
-        kernel.shmall=1152921504606846720
-        kernel.shmmax=9223372036854775807
-        kernel.shmmni=409600
-        vm.max_map_count=2147483647
-        vm.hugetlb_shm_group=HUGETLB_SHM_GROUP
+ * Output files are created under result\_analysis/output\_$EXPNAME
 
 Authors
 -------
