@@ -93,6 +93,48 @@ Analyzing experiment output
  * Estimated time: 15 minutes
  * Analysis output files are created under result\_analysis/output\_$EXPNAME
 
+	Figure 3
+	 (a) output_macrobench_tpcc-full_warehouse_1.pdf
+	 (b) output_macrobench_tpcc-full_warehouse_4.pdf
+	 (c) output_macrobench_tpcc-full_fixed_ratio.pdf
+
+	Figure 4
+	 (a) output_macrobench_tpcc-full_warehouse_1_siu.pdf
+	 (b) output_macrobench_tpcc-full_warehouse_4_siu.pdf
+	 (c) output_macrobench_tpcc-full_fixed_ratio_siu.pdf
+
+	Figure 5
+	 (a) output_macrobench_tpcc_warehouse_1.pdf
+	 (b) output_macrobench_tpcc_warehouse_4.pdf
+	 (c) output_macrobench_tpcc_fixed_ratio.pdf
+
+	Figure 6
+	 (a) output_macrobench_ycsb_record_100_req_16_read_0_50_zipf_0_99.pdf
+	 (b) output_macrobench_ycsb_record_100_req_16_read_0_50_thread_28.pdf
+	 (c) output_macrobench_ycsb_record_100_req_16_read_0_95_thread_28.pdf
+
+	Figure 7
+	 output_macrobench_ycsb_record_100_req_1_read_0_95_zipf_0_99.pdf
+
+	Figure 8
+	 output_inlining_ycsb_req_16_read_0_95_zipf_0_00_thread_28.pdf
+
+	Table 2
+	 output_query.txt: "factor-ycsb-contended-tx"
+
+	Figure 9
+	 output_gc_tpcc-full.pdf
+
+	Figure 10
+	 output_backoff_tpcc-full_warehouse_4.pdf
+	 output_backoff_tpcc_warehouse_4.pdf
+	 output_backoff_ycsb_req_1_read_0_50_zipf_0_99.pdf
+
+	Figure 11
+	 output_macrobench_ycsb_record_100_req_1_read_0_50_zipf_0_99.pdf
+	 output_macrobench_ycsb_record_100_req_1_read_0_50_thread_28.pdf
+	 output_macrobench_ycsb_record_100_req_1_read_0_95_thread_28.pdf
+
 Authors
 -------
 
