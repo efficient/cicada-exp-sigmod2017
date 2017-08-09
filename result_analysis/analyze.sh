@@ -22,16 +22,16 @@ rm query.cache 2> /dev/null
 
 ln -s "$EXP_DATA" exp_data
 
-python -u ../query.py | tee output_query.txt
+python3 -u ../query.py | tee output_query.txt
 
-python ../plot_ycsb.py
-python ../plot_tpcc.py
-# python ../plot_tatp.py
+python3 ../plot_ycsb.py
+python3 ../plot_tpcc.py
+# python3 ../plot_tatp.py
 
-python ../plot_inlining.py
-python ../plot_backoff.py
-python ../plot_gc.py
-python ../plot_factor.py
-#python ../plot_singlekey.py
+python3 ../plot_inlining.py
+python3 ../plot_backoff.py
+python3 ../plot_gc.py
+python3 ../plot_factor.py
+#python3 ../plot_singlekey.py
 
-python ../plot_latency.py
+python3 ../plot_latency.py
