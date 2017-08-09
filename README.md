@@ -8,13 +8,13 @@ Hardware requirements
    * Interleaved CPU core ID mapping (even numbered cores on CPU 0, odd numbered cores on CPU 1)
    * Turbo Boost disabled for more accurate core scalability measurement
    * Hyperthreading enabled (though experiments do not use it)
- * At least 128 GiB of DRAM
-   * Should use all available memory channels for full memory bandwidth
+ * DRAM >= 128 GiB
+   * Ensure to use all memory channels for full memory bandwidth
 
-Base OS distribution
---------------------
+Installing Base OS
+-------
 
- * Ubuntu 14.04 LTS x86\_64
+ * Ubuntu 14.04 LTS amd64 server
 
 Installing packages
 -------------------
@@ -27,9 +27,15 @@ Installing packages
 	sudo apt-get install -y --force-yes cmake git g++-5 libnuma-dev make python3 python3-pip
 	pip3 install --user 'pandas>=0.20,<0.21' 'pandasql>=0.7,<0.8' 'matplotlib>=1.5,<2.0'
 
-Configuring systems
--------------------
+ * Estimated time: 1 hour
 
+Configuring system
+------------------------------------------------
+
+	# for non-interactive experiment execution
+	echo "`whoami` ALL=(ALL:ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
+
+	# for third-party engies
 	echo "`whoami` - memlock unlimited" | sudo tee -a /etc/security/limits.conf
 	echo "`whoami` - nofile 655360 | sudo tee -a /etc/security/limits.conf
 	echo "`whoami` - nproc 655360 | sudo tee -a /etc/security/limits.conf
@@ -42,9 +48,10 @@ Configuring systems
 	echo "vm.hugetlb_shm_group=`grep '^hugeshm:' /etc/group | awk -F: -e '{print $3}'`" | sudo tee -a /etc/sysctl.conf
 
 	sudo groupadd hugeshm
-	echo "`whoami` ALL=(ALL:ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
 
- * Restart the system
+	sudo reboot
+
+ * Estimated time: 15 minutes
 
 Downloading source code
 -----------------------
@@ -54,6 +61,8 @@ Downloading source code
 	git submodule init
 	git submodule update
 
+ * Estimated time: 1 minute
+
 Building all engines
 --------------------
 
@@ -62,23 +71,26 @@ Building all engines
 	./build_foedus.sh
 	./build_silo.sh
 
+ * Estimated time: 15 minutes
+
 Running all experiments
 -----------------------
 
 	EXPNAME=MYEXP
 	./run_exp.py exp_data_$EXPNAME run
 
- * The entire experiment takes about 2 to 3 days to finish
- * Experiment result files are created in exp\_data\_$EXPNAME
+ * Estimated time: 3 days
+ * Experiment output files are created in exp\_data\_$EXPNAME
  * Each run automatically rebuilds DBx1000 (and cicada-engine for some experiments) to apply system/benchmark parameters
 
-Analyzing experiemnt results
-----------------------------
+Analyzing experiment output
+---------------------------
 
 	cd result_analysis
 	./analyze.sh ../exp_data_$EXPNAME
 
- * Output files are created under result\_analysis/output\_$EXPNAME
+ * Estimated time: 15 minutes
+ * Analysis output files are created under result\_analysis/output\_$EXPNAME
 
 Authors
 -------
