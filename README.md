@@ -27,7 +27,9 @@ Installing packages
 	sudo apt-get install -y --force-yes cmake git g++-5 libnuma-dev make python3 python3-pip
 	pip3 install --user 'pandas>=0.20,<0.21' 'pandasql>=0.7,<0.8' 'matplotlib>=1.5,<2.0'
 
- * Estimated time: 1 hour
+	sudo apt-get install -y --force-yes texlive-generic-recommended texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra dvipng
+
+ * Estimated time: 2 hour
 
 Configuring system
 ------------------
