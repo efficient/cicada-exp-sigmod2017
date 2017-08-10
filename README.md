@@ -9,7 +9,7 @@ Hardware requirements
    * Turbo Boost disabled for more accurate core scalability measurement
    * Hyperthreading enabled (though experiments do not use it)
  * DRAM >= 128 GiB
-   * Ensure to use all memory channels for full memory bandwidth
+   * Ensure to use all memory channels (while keeping the maximum frequency) for full memory bandwidth
  * Disk space >= 15 GB
    * SSD recommended
 
