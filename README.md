@@ -24,7 +24,7 @@ Installing packages
 	sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 
 	sudo apt-get update
-	sudo apt-get install -y --force-yes cmake git g++-5 libnuma-dev make python3 python3-pip
+	sudo apt-get install -y --force-yes build-essential cmake git g++-5 libnuma-dev libdwarf-dev python3 python3-pip
 	pip3 install --user 'pandas>=0.20,<0.21' 'pandasql>=0.7,<0.8' 'matplotlib>=1.5,<2.0'
 
 	sudo apt-get install -y --force-yes texlive-generic-recommended texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra dvipng
@@ -47,9 +47,9 @@ Configuring system
 	echo "kernel.shmmax=9223372036854775807" | sudo tee -a /etc/sysctl.conf
 	echo "kernel.shmmni=409600" | sudo tee -a /etc/sysctl.conf
 	echo "vm.max_map_count=2147483647" | sudo tee -a /etc/sysctl.conf
-	echo "vm.hugetlb_shm_group=`grep '^hugeshm:' /etc/group | awk -F: -e '{print $3}'`" | sudo tee -a /etc/sysctl.conf
-
 	sudo groupadd hugeshm
+	sudo usermod -a -G hugeshm `whoami`
+	echo "vm.hugetlb_shm_group=`grep '^hugeshm:' /etc/group | awk -F: -e '{print $3}'`" | sudo tee -a /etc/sysctl.conf
 
 	sudo reboot
 
