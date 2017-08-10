@@ -28,9 +28,7 @@ Installing packages
 
 	# common
 	sudo apt-get update
-	sudo apt-get install -y build-essential cmake git libnuma-dev
-	# for Cicada
-	sudo apt-get install -y g++-5
+	sudo apt-get install -y build-essential cmake git g++-5 libnuma-dev
 	# for FOEDUS/MOCC
 	sudo apt-get install -y libdwarf-dev
 
