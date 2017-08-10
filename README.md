@@ -10,6 +10,8 @@ Hardware requirements
    * Hyperthreading enabled (though experiments do not use it)
  * DRAM >= 128 GiB
    * Ensure to use all memory channels for full memory bandwidth
+ * Disk space >= 15 GB
+   * SSD recommended
 
 Base OS
 -------
