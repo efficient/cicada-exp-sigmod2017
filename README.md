@@ -48,19 +48,14 @@ Configuring system
 	# for non-interactive experiment execution
 	echo "`whoami` ALL=(ALL:ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
 
-	# for third-party engies
+	# for third-party engines
 	echo "`whoami` - memlock unlimited" | sudo tee -a /etc/security/limits.conf
 	echo "`whoami` - nofile 655360 | sudo tee -a /etc/security/limits.conf
 	echo "`whoami` - nproc 655360 | sudo tee -a /etc/security/limits.conf
 	echo "`whoami` - rtprio 99 | sudo tee -a /etc/security/limits.conf
 
-	echo "kernel.shmall=1152921504606846720" | sudo tee -a /etc/sysctl.conf
-	echo "kernel.shmmax=9223372036854775807" | sudo tee -a /etc/sysctl.conf
-	echo "kernel.shmmni=409600" | sudo tee -a /etc/sysctl.conf
-	echo "vm.max_map_count=2147483647" | sudo tee -a /etc/sysctl.conf
 	sudo groupadd hugeshm
 	sudo usermod -a -G hugeshm `whoami`
-	echo "vm.hugetlb_shm_group=`grep '^hugeshm:' /etc/group | awk -F: -e '{print $3}'`" | sudo tee -a /etc/sysctl.conf
 
 	sudo reboot
 
