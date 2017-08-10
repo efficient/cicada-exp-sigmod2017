@@ -19,15 +19,26 @@ Base OS
 Installing packages
 -------------------
 
+	# for g++-5
 	sudo apt-get update
-	sudo apt-get install -y --force-yes software-properties-common
+	sudo apt-get install -y software-properties-common
 	sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 
+	# common
 	sudo apt-get update
-	sudo apt-get install -y --force-yes build-essential cmake git g++-5 libnuma-dev libdwarf-dev python3 python3-pip
-	pip3 install --user 'pandas>=0.20,<0.21' 'pandasql>=0.7,<0.8' 'matplotlib>=1.5,<2.0'
+	sudo apt-get install -y build-essential cmake git libnuma-dev
+	# for Cicada
+	sudo apt-get install -y g++-5
+	# for FOEDUS/MOCC
+	sudo apt-get install -y libdwarf-dev
 
-	sudo apt-get install -y --force-yes texlive-generic-recommended texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra dvipng
+	# for experiments
+	sudo apt-get install -y psmisc python3
+
+	# for analysis
+	sudo apt-get install -y python3-pip
+	sudo apt-get install -y texlive-generic-recommended texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra dvipng
+	pip3 install --user 'pandas>=0.20,<0.21' 'pandasql>=0.7,<0.8' 'matplotlib>=1.5,<2.0'
 
  * Estimated time: 2 hour
 
