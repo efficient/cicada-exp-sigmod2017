@@ -28,9 +28,11 @@ Installing packages
 
 	# common
 	sudo apt-get update
-	sudo apt-get install -y build-essential cmake git g++-5 libnuma-dev
+	sudo apt-get install -y build-essential cmake git g++-5 libnuma-dev libjemalloc-dev
+	# for SILO
+	sudo apt-get install -y libdb6.0++-dev
 	# for FOEDUS/MOCC
-	sudo apt-get install -y libdwarf-dev
+	sudo apt-get install -y libgoogle-perftools-dev papi-tools
 
 	# for experiments
 	sudo apt-get install -y psmisc python3
