@@ -7,9 +7,9 @@ Hardware requirements
  * Dual-socket Intel CPU >= Haswell
    * Interleaved CPU core ID mapping (even numbered cores on CPU 0, odd numbered cores on CPU 1)
    * Turbo Boost disabled for more accurate core scalability measurement
-   * Hyperthreading enabled (though experiments do not use it)
+   * Hyperthreading enabled (though experiments do not use it directly)
  * DRAM >= 128 GiB
-   * Ensure to use all memory channels (while keeping the maximum frequency) for full memory bandwidth
+   * Ensure to use all memory channels (while keeping the maximum frequency) for full bandwidth
  * Disk space >= 15 GB
    * SSD recommended
 
@@ -29,7 +29,7 @@ Installing packages
 	# common
 	sudo apt-get update
 	sudo apt-get install -y build-essential cmake git g++-5 libnuma-dev libjemalloc-dev
-	# for SILO
+	# for Silo
 	sudo apt-get install -y libdb6.0++-dev
 	# for FOEDUS/MOCC
 	sudo apt-get install -y libgoogle-perftools-dev papi-tools
@@ -71,6 +71,11 @@ Downloading source code
 	cd cicada-exp-sigmod2017
 	git submodule init
 	git submodule update
+
+	cd silo
+	git submodule init
+	git submodule update
+	cd ..
 
  * Estimated time: 1 minute
 
