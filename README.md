@@ -42,7 +42,7 @@ Installing packages
 	sudo apt-get install -y texlive-generic-recommended texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra dvipng
 	pip3 install --user 'pandas>=0.20,<0.21' 'pandasql>=0.7,<0.8' 'matplotlib>=1.5,<2.0'
 
- * Estimated time: 2 hour
+ * Estimated time: 1 hour
 
 Configuring system
 ------------------
