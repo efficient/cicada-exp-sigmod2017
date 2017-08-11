@@ -28,7 +28,7 @@ Installing packages
 
 	# common
 	sudo apt-get update
-	sudo apt-get install -y build-essential cmake git g++-5 libnuma-dev libjemalloc-dev
+	sudo apt-get install -y build-essential cmake git g++-5 libjemalloc-dev libnuma-dev
 	# for Silo
 	sudo apt-get install -y libdb6.0++-dev
 	# for FOEDUS/MOCC
