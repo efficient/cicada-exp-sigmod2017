@@ -66,22 +66,14 @@ Configuring system
 Downloading source code
 -----------------------
 
-	git clone https://github.com/efficient/cicada-exp-sigmod2017.git
-
-	cd cicada-exp-sigmod2017
-	git submodule init
-	git submodule update
-
-	cd silo
-	git submodule init
-	git submodule update
-	cd ..
+	git clone --recursive https://github.com/efficient/cicada-exp-sigmod2017.git
 
  * Estimated time: 1 minute
 
 Building all engines
 --------------------
 
+	cd cicada-exp-sigmod2017
 	./build_cicada.sh
 	./build_ermia.sh
 	./build_foedus.sh
