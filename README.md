@@ -52,9 +52,9 @@ Configuring system
 
 	# for third-party engines
 	echo "`whoami` - memlock unlimited" | sudo tee -a /etc/security/limits.conf
-	echo "`whoami` - nofile 655360 | sudo tee -a /etc/security/limits.conf
-	echo "`whoami` - nproc 655360 | sudo tee -a /etc/security/limits.conf
-	echo "`whoami` - rtprio 99 | sudo tee -a /etc/security/limits.conf
+	echo "`whoami` - nofile 655360" | sudo tee -a /etc/security/limits.conf
+	echo "`whoami` - nproc 655360" | sudo tee -a /etc/security/limits.conf
+	echo "`whoami` - rtprio 99" | sudo tee -a /etc/security/limits.conf
 
 	sudo groupadd hugeshm
 	sudo usermod -a -G hugeshm `whoami`
